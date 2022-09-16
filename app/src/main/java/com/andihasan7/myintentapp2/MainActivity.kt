@@ -7,12 +7,13 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.net.Uri
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var tvResult: TextView
     
-    private val resultLauncher = registerForActivityResult(
+    private val resultLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) {result ->
         if (result.resultCode == MoveForResultActivity.RESULT_CODE && result.data != null) {
